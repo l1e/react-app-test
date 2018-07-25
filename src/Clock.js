@@ -4,30 +4,30 @@ import './clock.css'
 class Clock extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = { date: new Date()}
-	};
+		this.state={date: new Date()}
+	}
 	componentDidMount(){
 		this.timeId = setInterval(
-		()=>this.titck(),
-		1000);
+			()=>this.tick(),
+			1000)
 	}
-	componentillUnmount(){
+	componentWillUnmount(){
 		clearInterval(this.timeId);
 	}
-	titck(){
-		this.setState({date: new Date()})
+	tick(){
+		this.setState(
+			{date: new Date()}
+			);
 	}
+
 	render(){
 		return(
-		<React.Fragment> 
-			<h1 className='hi'> Hello, world</h1>
-			<p className='clock'> It is {this.state.date.toLocaleTimeString()} </p>
-		</React.Fragment>
-		)
+			<React.Fragment>
+				<h1 className='hi'> Hello, world. </h1>
+				<p className="timeBlock"> It is {this.state.date.toLocaleTimeString()}</p>
+			</React.Fragment>
+			)
 	}
 }
-
-
-
 
 export default Clock
